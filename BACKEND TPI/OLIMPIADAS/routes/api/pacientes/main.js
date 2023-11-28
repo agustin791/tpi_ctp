@@ -2,14 +2,29 @@ var express = require('express');
 var router = express.Router();
 var con = require('../conexion');
 
+router.get("/buscar",function(req, res, next){
+    const {documento}=req.query
+    const sql = 'SELECT* FROM pacientes WHERE documento = ?';
+    con.query(sql,[documento],function(error, result){
+
+        res.json({
+            status:"Pacientes",
+            pacientes:result
+            
+        })
+        
+    })
+    //SQL listado de Paciente
+})
+
 router.get("/",function(req, res, next){
 
-    const sql = 'SELECt * FROM pacientes';
+    const sql = 'SELECT * FROM pacientes';
     con.query(sql,function(error, result){
 
         res.json({
             status:"Pacientes",
-            pasientes:result
+            pacientes:result
             
         })
         

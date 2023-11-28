@@ -32,7 +32,6 @@ const sql = 'INSERT INTO llamados (zona_id, origen, enfermero_id, paciente_id, e
         } else {
             res.json({
                 status:"Post llamado",
-                msj:{  }
             })
         }
     })
@@ -86,7 +85,7 @@ router.delete("/", function(req, res, next){
         if (error) {
             res.json({
                 status: "error",
-                error: "Error en la consulta SQL"
+                error: "Error"
             });
         } else {
             res.json({
